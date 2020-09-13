@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Formik, ErrorMessage, Field } from "formik";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../api/auth-api";
 import { getMeThunk } from "../../utils/redux/slices/user";
@@ -10,11 +10,11 @@ import { initLoginFormValue, loginSchema } from "../../forms/login";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log(user)
-  }, [user])
+    console.log(user);
+  }, [user]);
 
   /**
    * Login handler with user credentials
@@ -46,16 +46,11 @@ export default function Login() {
       >
         {({ handleSubmit, dirty, isValid, isSubmitting }) => {
           return (
-            <form
-              onSubmit={handleSubmit}
-              className="text-center"
-            >
+            <form onSubmit={handleSubmit} className="text-center">
               <h5 className="card-title">Login</h5>
 
               <div className="form-label-group mb-3 text-left">
-                <label htmlFor="inputEmail">
-                  Email address
-                </label>
+                <label htmlFor="inputEmail">Email address</label>
                 <Field
                   autoFocus
                   type="email"
@@ -71,9 +66,7 @@ export default function Login() {
               </div>
 
               <div className="form-label-group mb-3 text-left">
-                <label htmlFor="inputPassword">
-                  Password
-                </label>
+                <label htmlFor="inputPassword">Password</label>
                 <Field
                   type="password"
                   name="password"
@@ -95,11 +88,11 @@ export default function Login() {
                   Login
                 </button>
               </div>
-              <p>{user.user_detail?.name}</p>
+              <p>{user.name}</p>
             </form>
           );
         }}
       </Formik>
     </div>
-  )
+  );
 }

@@ -10,7 +10,7 @@ export const getMeThunk = createAsyncThunk(
         return res.data;
       },
       (err) => {
-        return err.response.data;
+        return err.message;
       }
     );
   }
